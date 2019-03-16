@@ -142,7 +142,7 @@ def _get_annotations(generator):
             if not generator.has_label(label):
                 continue
 
-            all_annotations[i][label] = annotations['bboxes'][annotations['labels'] == label, :][annotations['depths'] == depth, :].copy()
+            all_annotations[i][label] = annotations['bboxes'][annotations['labels'] == label, :].copy()
 
     return all_annotations
 
@@ -169,7 +169,7 @@ def evaluate(
     """
     # gather all detections and annotations
     all_detections     = _get_detections(generator, model, score_threshold=score_threshold, max_detections=max_detections, save_path=save_path)
-    all_annotations    = _get_annotations(generator)[:2]
+    all_annotations    = _get_annotations(generator)
     average_precisions = {}
 
     # all_detections = pickle.load(open('all_detections.pkl', 'rb'))

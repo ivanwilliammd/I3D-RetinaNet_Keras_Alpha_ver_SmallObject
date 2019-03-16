@@ -153,20 +153,20 @@ class FilterDetections(keras.layers.Layer):
         """
         boxes          = inputs[0]
         classification = inputs[1]
-        depthsification= inputs[2]
-        other          = inputs[3:]
+        # depthsification= inputs[2]
+        other          = inputs[2:]
 
         # wrap nms with our parameters
         def _filter_detections(args):
             boxes          = args[0]
             classification = args[1]
-            depthsification= args[2]
-            other          = args[3]
+            # depthsification= args[2]
+            other          = args[2]
 
             return filter_detections(
                 boxes,
                 classification,
-                depthsification,
+                # depthsification,
                 other,
                 nms                   = self.nms,
                 class_specific_filter = self.class_specific_filter,
@@ -178,7 +178,8 @@ class FilterDetections(keras.layers.Layer):
         # call filter_detections on each batch
         outputs = backend.map_fn(
             _filter_detections,
-            elems=[boxes, classification, depthsification, other],
+            elems=[boxes, classification, other],
+            # elems=[boxes, classification, depthsification, other],
             dtype=[keras.backend.floatx(), keras.backend.floatx(), 'int32'] + [o.dtype for o in other],
             parallel_iterations=self.parallel_iterations
         )

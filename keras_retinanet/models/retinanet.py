@@ -423,10 +423,10 @@ def retinanet_bbox(
     # we expect the anchors, regression, classification values as first output
     regression     = model.outputs[0]
     classification = model.outputs[1]
-    depthsification= model.outputs[2]
+    # depthsification= model.outputs[2]
 
     # "other" can be any additional output from custom submodels, by default this will be []
-    other = model.outputs[3:]
+    other = model.outputs[2:]
 
     # apply predicted regression to anchors
     boxes = layers.RegressBoxes(name='boxes')([anchors, regression])
@@ -437,7 +437,7 @@ def retinanet_bbox(
         nms                   = nms,
         class_specific_filter = class_specific_filter,
         name                  = 'filtered_detections'
-    )([boxes, classification, depthsification] + other)
+    )([boxes, classification] + other)
 
     # construct the model
     return keras.models.Model(inputs=model.inputs, outputs=detections, name=name)

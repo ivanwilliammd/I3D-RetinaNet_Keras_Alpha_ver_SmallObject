@@ -241,6 +241,27 @@ def __create_pyramid_features(C3, C4, C5, feature_size=256):
 
     # import IPython;IPython.embed()
     
+    # # making z axis of P3-P7 to 1
+    P3 = keras.layers.Permute((2, 3, 4, 1), name='P3_permute_1')(P3)
+    P3 = keras.layers.Conv3D(filters=1, activation="relu", name='P3_1x1', kernel_size=1)(P3)
+    P3 = keras.layers.Permute((4, 1, 2, 3), name='P3_permute_2')(P3)
+
+    P4 = keras.layers.Permute((2, 3, 4, 1), name='P4_permute_1')(P4)
+    P4 = keras.layers.Conv3D(filters=1, activation="relu", name='P4_1x1', kernel_size=1)(P4)
+    P4 = keras.layers.Permute((4, 1, 2, 3), name='P4_permute_2')(P4)
+
+    P5 = keras.layers.Permute((2, 3, 4, 1), name='P5_permute_1')(P5)
+    P5 = keras.layers.Conv3D(filters=1, activation="relu", name='P5_1x1', kernel_size=1)(P5)
+    P5 = keras.layers.Permute((4, 1, 2, 3), name='P5_permute_2')(P5)
+
+    P6 = keras.layers.Permute((2, 3, 4, 1), name='P6_permute_1')(P6)
+    P6 = keras.layers.Conv3D(filters=1, activation="relu", name='P6_1x1', kernel_size=1)(P6)
+    P6 = keras.layers.Permute((4, 1, 2, 3), name='P6_permute_2')(P6)
+
+    P7 = keras.layers.Permute((2, 3, 4, 1), name='P7_permute_1')(P7)
+    P7 = keras.layers.Conv3D(filters=1, activation="relu", name='P7_1x1', kernel_size=1)(P7)
+    P7 = keras.layers.Permute((4, 1, 2, 3), name='P7_permute_2')(P7)
+    
     return [P3, P4, P5, P6, P7]
 
 

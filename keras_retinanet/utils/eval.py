@@ -78,10 +78,11 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         # image, scale = generator.resize_image(image)                #generator --> preprocess_group_entry
         imagesss = generator.__getitem__(1)[0]
 
-        if keras.backend.image_data_format() == 'channels_first':
-            imagesss = imagesss.transpose((2, 0, 1))
+        # if keras.backend.image_data_format() == 'channels_first':
+        #     imagesss = imagesss.transpose((2, 0, 1))
 
         # run network
+        import IPython;IPython.embed()
         # boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))[:3]
         boxes, scores, labels = model.predict_on_batch(imagesss)
 

@@ -1,4 +1,4 @@
-keras_retinanet/bin/train.py --step 2 --epoch 5 csv ../i3d_dataset_OLD/LungNoduleRevision.csv ../i3d_dataset_OLD/ClassIDnew.csv
+keras_retinanet/bin/train.py --step 2 --epoch 5 csv ../i3d_dataset_OLD/LungNoduleRevision.csv ../i3d_dataset_OLD/ClassIDnew.csv --val-annotations ../i3d_dataset_OLD/LungNoduleRevision.csv
 
 
 

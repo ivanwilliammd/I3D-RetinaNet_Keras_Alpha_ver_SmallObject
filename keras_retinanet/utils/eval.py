@@ -73,9 +73,9 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
     all_detections = [[None for i in range(generator.num_classes()) if generator.has_label(i)] for j in range(generator.size())]
 
     for i in progressbar.progressbar(range(generator.size()), prefix='Running network: '):
-        # raw_image    = generator.load_image(i)                       #equivalent generator --> load_image_group
-        # image        = generator.preprocess_image(raw_image.copy()) #generator --> preprocess_group_entry
-        # image, scale = generator.resize_image(image)                #generator --> preprocess_group_entry
+        raw_image    = generator.load_image(i)                       #equivalent generator --> load_image_group
+        image        = generator.preprocess_image(raw_image.copy()) #generator --> preprocess_group_entry
+        image, scale = generator.resize_image(image)                #generator --> preprocess_group_entry
         imagesss = generator.__getitem__(1)[0]
 
         # if keras.backend.image_data_format() == 'channels_first':
@@ -84,7 +84,7 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         # run network
         import IPython;IPython.embed()
         # boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))[:3]
-        boxes, scores, labels = model.predict_on_batch(imagesss)
+        boxes, scores, labels = model.predict_on_batch(imagesss)[:3]
 
         # correct boxes for image scale
         boxes /= scale

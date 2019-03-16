@@ -420,10 +420,12 @@ def retinanet_bbox(
     features = [model.get_layer(p_name).output for p_name in ['P3', 'P4', 'P5', 'P6', 'P7']]
     anchors  = __build_anchors(anchor_params, features)
 
-    # we expect the anchors, regression, classification values as first output
+    # we expect the anchors, regression and classification values as first output
     regression     = model.outputs[0]
     classification = model.outputs[1]
     # depthsification= model.outputs[2]
+    # other = model.outputs[3:]
+
 
     # "other" can be any additional output from custom submodels, by default this will be []
     other = model.outputs[2:]

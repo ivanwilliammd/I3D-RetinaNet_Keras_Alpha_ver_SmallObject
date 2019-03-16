@@ -17,25 +17,19 @@ limitations under the License.
 from __future__ import division
 import numpy as np
 import cv2
-import h5py
 from PIL import Image
 
 from .transform import change_transform_origin
 
 
 def read_image_bgr(path):
-    """ Read an image in BGR format. --> Read HDF5 file
+    """ Read an image in BGR format.
 
     Args
         path: Path to the image.
     """
-    hdf5_file=h5py.File(path, 'r')
-    dataset_hdf5=hdf5_file.get('dataset')
-    image=np.array(dataset_hdf5)
-
-    # image = np.asarray(Image.open(path).convert('RGB'))
-    # return dataset
-    return image.copy()
+    image = np.asarray(Image.open(path).convert('RGB'))
+    return image[:, :, ::-1].copy()
 
 
 def preprocess_image(x, mode='caffe'):
@@ -74,13 +68,13 @@ def adjust_transform_for_image(transform, image, relative_translation):
     The translation of the matrix will be scaled with the size of the image.
     The linear part of the transformation will adjusted so that the origin of the transformation will be at the center of the image.
     """
-    depth, height, width, channels = image.shape
+    height, width, channels = image.shape
 
     result = transform
 
     # Scale the translation with the image size if specified.
     if relative_translation:
-        result[1:3, 2] *= [width, height]
+        result[0:2, 2] *= [width, height]
 
     # Move the origin of transformation.
     result = change_transform_origin(transform, (0.5 * width, 0.5 * height))

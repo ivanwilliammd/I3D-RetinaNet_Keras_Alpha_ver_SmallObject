@@ -169,7 +169,7 @@ def evaluate(
     """
     # gather all detections and annotations
     all_detections     = _get_detections(generator, model, score_threshold=score_threshold, max_detections=max_detections, save_path=save_path)
-    all_annotations    = _get_annotations(generator)
+    all_annotations    = _get_annotations(generator)[:2]
     average_precisions = {}
 
     # all_detections = pickle.load(open('all_detections.pkl', 'rb'))

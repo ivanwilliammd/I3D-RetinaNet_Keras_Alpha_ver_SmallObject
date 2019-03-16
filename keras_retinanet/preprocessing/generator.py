@@ -209,7 +209,7 @@ class Generator(keras.utils.Sequence):
             # Transform the bounding boxes in the annotations.
             annotations['bboxes'] = annotations['bboxes'].copy()
             for index in range(annotations['bboxes'].shape[0]):
-                annotations['bboxes'][index, :] = transform_aabb(transform, annotations['bboxes'][index, :])
+                annotations['bboxes'][index, :] = transform_aabb(transform[0], annotations['bboxes'][index, :])
         return image, annotations
 
     def random_transform_group(self, image_group, annotations_group):

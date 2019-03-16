@@ -1,0 +1,16 @@
+keras_retinanet/bin/train.py --step 2 --epoch 10 csv data/LungNodule.csv data/ClassID.csv
+
+keras_retinanet/bin/train.py --step 2 --epoch 5 csv data/LungNodule.csv data/ClassID.csv
+
+
+keras_retinanet/bin/train.py --batch-size 2 --epoch 10 csv data/LungNodule.csv data/ClassID.csv
+
+
+TESTING & Validation
+keras_retinanet/bin/train.py --step 1 --epoch 5 csv data/LungNodule.csv data/ClassID.csv --val-annotations data/LungNodule.csv
+
+
+
+
+
+CONTOH DEBUG FUNCTION: train_generator.__getitem__(1)[0].shape

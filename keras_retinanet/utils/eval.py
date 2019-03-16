@@ -82,7 +82,7 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         #     imagesss = imagesss.transpose((2, 0, 1))
 
         # run network
-        import IPython;IPython.embed()
+        # import IPython;IPython.embed()
         # boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))[:3]
         boxes, scores, labels = model.predict_on_batch(imagesss)[:3]
 

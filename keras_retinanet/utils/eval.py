@@ -76,7 +76,7 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         raw_image    = generator.load_image(i)                       #equivalent generator --> load_image_group
         image        = generator.preprocess_image(raw_image.copy()) #generator --> preprocess_group_entry
         image, scale = generator.resize_image(image)                #generator --> preprocess_group_entry
-        imagesss = generator.__getitem__(1)[0]
+        imagesss = generator.__getitem__(i)[0]
 
         # if keras.backend.image_data_format() == 'channels_first':
         #     imagesss = imagesss.transpose((2, 0, 1))

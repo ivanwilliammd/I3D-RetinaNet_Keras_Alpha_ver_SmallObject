@@ -211,7 +211,9 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
         cooldown   = 0,
         min_lr     = 0
     ))
-
+    # # Create CSV losses log per epoch
+    callbacks.append(keras.callbacks.CSVLogger('losses_training_log.csv', separator=',', append=True))
+    
     return callbacks
 
 

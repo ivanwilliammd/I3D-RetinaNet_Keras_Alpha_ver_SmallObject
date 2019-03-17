@@ -98,4 +98,4 @@ class Evaluate(keras.callbacks.Callback):
 
         # # Write the MAP to CSV
         mAP_csv=open('mAP_csv.csv', mode='a')        
-        mAP_csv.write('mAP: ,' +'{:.4f}'.format(self.mean_ap))
+        mAP_csv.write('mAP: ,' +'{:.4f}'.format(self.mean_ap) +'\n')

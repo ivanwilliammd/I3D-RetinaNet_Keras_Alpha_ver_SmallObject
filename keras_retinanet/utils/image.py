@@ -17,6 +17,7 @@ limitations under the License.
 from __future__ import division
 import numpy as np
 import cv2
+import h5py
 from PIL import Image
 
 from .transform import change_transform_origin
@@ -28,7 +29,11 @@ def read_image_bgr(path):
     Args
         path: Path to the image.
     """
-    image = np.asarray(Image.open(path).convert('RGB'))
+    hdf5_file=h5py.File(path, 'r')
+    dataset_hdf5=hdf5_file.get('dataset')
+    image=np.array(dataset_hdf5)
+    import IPython;IPython.embed()
+    # image = np.asarray(Image.open(path).convert('RGB'))
     return image[:, :, ::-1].copy()
 
 

@@ -32,8 +32,8 @@ def read_image_bgr(path):
     # hdf5_file=h5py.File(path, 'r')
     # dataset_hdf5=hdf5_file.get('dataset')
     # image=np.array(dataset_hdf5)
-    # import IPython;IPython.embed()
     image = np.asarray(Image.open(path).convert('RGB'))
+    import IPython;IPython.embed()
     return image[:, :, ::-1].copy()
 
 

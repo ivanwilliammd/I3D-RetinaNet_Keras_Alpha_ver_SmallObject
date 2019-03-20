@@ -233,10 +233,29 @@ def resize_image(img, min_side=800, max_side=1333):
     Returns
         A resized image.
     """
-    # compute scale to resize the image
-    scale = compute_resize_scale(img.shape, min_side=min_side, max_side=max_side)
+    # # compute scale to resize the image
+    # scale = compute_resize_scale(img.shape, min_side=min_side, max_side=max_side)
 
-    # resize the image with the computed scale
-    img = cv2.resize(img, None, fx=scale, fy=scale)
+    # # resize the image with the computed scale
+    # img = cv2.resize(img, None, fx=scale, fy=scale)
 
-    return img, scale
+    # return img, scale
+
+    
+    
+    i=0
+    img_list=[]
+    img_array=[]
+
+    for i in range(len(img)):
+        # # resize the image with the computed scale
+        scale = compute_resize_scale(img[i].shape, min_side=min_side, max_side=max_side)
+        img[i] = cv2.resize(img[i], None, fx=scale, fy=scale)    
+        img_list.append(img[i])
+        
+            
+    img_array=np.stack((img_list[0], img_list[1], img_list[2], img_list[3], img_list[4], img_list[5], img_list[6], img_list[7], img_list[8], img_list[9],
+        img_list[10], img_list[11], img_list[12], img_list[13], img_list[14], img_list[15], img_list[16], img_list[17], img_list[18], img_list[19],
+        img_list[20], img_list[21], img_list[22], img_list[23], img_list[24], img_list[25], img_list[26], img_list[27], img_list[28], img_list[29],
+        img_list[30], img_list[31]), axis=0)
+    return img_array, scale

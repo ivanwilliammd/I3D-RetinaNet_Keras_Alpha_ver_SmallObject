@@ -162,8 +162,10 @@ class Generator(keras.utils.Sequence):
                 (annotations['bboxes'][:, 3] <= annotations['bboxes'][:, 1]) |
                 (annotations['bboxes'][:, 0] < 0) |
                 (annotations['bboxes'][:, 1] < 0) |
-                (annotations['bboxes'][:, 2] > image.shape[1]) |
-                (annotations['bboxes'][:, 3] > image.shape[0])
+                # (annotations['bboxes'][:, 2] > image.shape[1]) |
+                # (annotations['bboxes'][:, 3] > image.shape[0])
+                (annotations['bboxes'][:, 2] > image.shape[2]) |
+                (annotations['bboxes'][:, 3] > image.shape[1])
             )[0]
 
             # delete invalid indices

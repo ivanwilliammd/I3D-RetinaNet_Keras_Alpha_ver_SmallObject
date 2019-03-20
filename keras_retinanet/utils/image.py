@@ -148,15 +148,41 @@ def apply_transform(matrix, image, params):
       image:  The image to transform.
       params: The transform parameters (see TransformParameters)
     """
-    output = cv2.warpAffine(
-        image,
-        matrix[:2, :],
-        dsize       = (image.shape[1], image.shape[0]),
-        flags       = params.cvInterpolation(),
-        borderMode  = params.cvBorderMode(),
-        borderValue = params.cval,
-    )
-    return output
+    # output = cv2.warpAffine(
+    #     image,
+    #     matrix[:2, :],
+    #     dsize       = (image.shape[1], image.shape[0]),
+    #     flags       = params.cvInterpolation(),
+    #     borderMode  = params.cvBorderMode(),
+    #     borderValue = params.cval,
+    # )
+    # return output
+
+    i=0
+    output_list=[]
+    output_array=[]
+    
+    for i in range(len(image)):
+        output = cv2.warpAffine(
+            image[i],
+            matrix[i][:2, :],
+            dsize       = (image[i].shape[1], image[i].shape[0]),
+            flags       = params.cvInterpolation(),
+            borderMode  = params.cvBorderMode(),
+            borderValue = params.cval,
+        )
+        output_list.append(output)
+        # i=i+1
+        
+    output_array=np.stack((output_list[0], output_list[1], output_list[2], output_list[3], output_list[4], 
+        output_list[5], output_list[6], output_list[7], output_list[8], output_list[9],
+        output_list[10], output_list[11], output_list[12], output_list[13], output_list[14], 
+        output_list[15], output_list[16], output_list[17], output_list[18], output_list[19],
+        output_list[20], output_list[21], output_list[22], output_list[23], output_list[24], 
+        output_list[25], output_list[26], output_list[27], output_list[28], output_list[29],
+        output_list[30], output_list[31]), axis=0)
+
+    return output_array
 
 
 def compute_resize_scale(image_shape, min_side=800, max_side=1333):

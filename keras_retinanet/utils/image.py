@@ -29,12 +29,12 @@ def read_image_bgr(path):
     Args
         path: Path to the image.
     """
-    # hdf5_file=h5py.File(path, 'r')
-    # dataset_hdf5=hdf5_file.get('dataset')
-    # image=np.array(dataset_hdf5)
-    image = np.asarray(Image.open(path).convert('RGB'))
-    import IPython;IPython.embed()
-    return image[:, :, ::-1].copy()
+    hdf5_file=h5py.File(path, 'r')
+    dataset_hdf5=hdf5_file.get('dataset')
+    image=np.array(dataset_hdf5)
+    # image = np.asarray(Image.open(path).convert('RGB'))
+    # import IPython;IPython.embed()
+    return image.copy()
 
 
 def preprocess_image(x, mode='caffe'):

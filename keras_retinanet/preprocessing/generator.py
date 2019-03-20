@@ -289,7 +289,8 @@ class Generator(keras.utils.Sequence):
         """ Compute target outputs for the network using images and their annotations.
         """
         # get the max image shape
-        max_shape = tuple(max(image.shape[x] for image in image_group) for x in range(3))
+        # max_shape = tuple(max(image.shape[x] for image in image_group) for x in range(3))
+        max_shape = tuple(max(image.shape[x+1] for image in image_group) for x in range(3))
         anchors   = self.generate_anchors(max_shape)
 
         batches = self.compute_anchor_targets(

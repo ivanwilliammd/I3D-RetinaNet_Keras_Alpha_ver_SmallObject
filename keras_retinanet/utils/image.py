@@ -158,6 +158,8 @@ def apply_transform(matrix, image, params):
     # )
     # return output
 
+    ## GANTI OUTPUT OPEN CV2
+    import IPython;IPython.embed()
     i=0
     output_list=[]
     output_array=[]
@@ -181,7 +183,8 @@ def apply_transform(matrix, image, params):
         output_list[20], output_list[21], output_list[22], output_list[23], output_list[24], 
         output_list[25], output_list[26], output_list[27], output_list[28], output_list[29],
         output_list[30], output_list[31]), axis=0)
-
+    import IPython;IPython.embed()
+    
     return output_array
 
 

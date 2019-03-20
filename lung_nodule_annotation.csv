@@ -4365,7 +4365,7 @@ HDF5_File/AGFA000000045111_Body 1.0_009.h5,435,347,451,363,19,29,subsolid
 HDF5_File/AGFA000000045111_Body 1.0_010.h5,,,,,,,
 HDF5_File/AGFA000000045111_Body 1.0_011.h5,,,,,,,
 HDF5_File/AGFA000000045111_Body 1.0_012.h5,,,,,,,
-HDF5_File/AGFA000000045728_Lung 0.5_001.h5,315,178,337,200,-2,18,groundglass
+HDF5_File/AGFA000000045728_Lung 0.5_001.h5,315,178,337,200,2,18,groundglass
 HDF5_File/AGFA000000045728_Lung 0.5_002.h5,,,,,,,
 HDF5_File/AGFA000000045728_Lung 0.5_003.h5,,,,,,,
 HDF5_File/AGFA000000045781_Body 1.0_001.h5,,,,,,,
@@ -5390,7 +5390,7 @@ HDF5_File/AGFA000000062266_Body 1.0_010.h5,116,389,124,397,6,11,subsolid
 HDF5_File/AGFA000000062266_Body 1.0_010.h5,409,360,415,366,24,28,subsolid
 HDF5_File/AGFA000000062266_Body 1.0_011.h5,,,,,,,
 HDF5_File/AGFA000000062266_Body 1.0_012.h5,346,400,354,408,31,32,subsolid
-HDF5_File/AGFA000000062266_Body 1.0_013.h5,346,400,354,408,1,-1,subsolid
+HDF5_File/AGFA000000062266_Body 1.0_013.h5,346,400,354,408,1,1,subsolid
 HDF5_File/AGFA000000062571_Body 1.0_001.h5,,,,,,,
 HDF5_File/AGFA000000062571_Body 1.0_002.h5,,,,,,,
 HDF5_File/AGFA000000062571_Body 1.0_003.h5,,,,,,,
@@ -11069,9 +11069,9 @@ HDF5_File/KDC6-14622_Inspirat. Lung 1.0_010.h5,,,,,,,
 HDF5_File/KDC6-14622_Inspirat. Lung 1.0_011.h5,,,,,,,
 HDF5_File/KDC6-14622_Inspirat. Lung 1.0_012.h5,,,,,,,
 HDF5_File/KDC6-14622_Inspirat. Lung 1.0_013.h5,,,,,,,
-HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,144,329,166,351,-1,13,subsolid
+HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,144,329,166,351,1,13,subsolid
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,147,364,159,376,7,14,subsolid
-HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,152,53,244,145,-3,32,subsolid
+HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,152,53,244,145,3,32,subsolid
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,145,329,167,351,27,32,solid
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_001.h5,97,110,129,142,28,32,subsolid
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_002.h5,152,53,244,145,1,19,subsolid
@@ -11090,9 +11090,9 @@ HDF5_File/KDC6-14718_Inspirat. Body 1.0_010.h5,,,,,,,
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_011.h5,60,301,68,309,13,18,solid
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_012.h5,,,,,,,
 HDF5_File/KDC6-14718_Inspirat. Body 1.0_013.h5,,,,,,,
-HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,144,329,166,351,-1,13,subsolid
+HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,144,329,166,351,1,13,subsolid
 HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,147,364,159,376,7,14,subsolid
-HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,152,53,244,145,-3,32,subsolid
+HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,152,53,244,145,3,32,subsolid
 HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,145,329,167,351,27,32,solid
 HDF5_File/KDC6-14718_Inspirat. Lung 1.0_001.h5,97,110,129,142,28,32,subsolid
 HDF5_File/KDC6-14718_Inspirat. Lung 1.0_002.h5,152,53,244,145,1,19,subsolid

@@ -277,6 +277,7 @@ class Generator(keras.utils.Sequence):
             image_batch[image_index, :image.shape[0], :image.shape[1], :image.shape[2], :image.shape[3]] = image
 
         if keras.backend.image_data_format() == 'channels_first':
+            # image_batch = image_batch.transpose((0, 3, 1, 2))
             image_batch = image_batch.transpose((0, 4, 1, 2, 3))
 
         return image_batch
@@ -292,9 +293,10 @@ class Generator(keras.utils.Sequence):
         """
         # get the max image shape
         # max_shape = tuple(max(image.shape[x] for image in image_group) for x in range(3))
-        print ('debug image_group')
-        import IPython;IPython.embed()
         
+        # print ('debug image_group')
+        # import IPython;IPython.embed()
+
         max_shape = tuple(max(image.shape[x+1] for image in image_group) for x in range(3))
         anchors   = self.generate_anchors(max_shape)
 

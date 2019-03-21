@@ -123,8 +123,9 @@ def anchor_targets_bbox(
 
         # ignore annotations outside of image
         # if image.shape:
+        print('debug after 0 and 1 (background & foreground)')
         import IPython;IPython.embed()
-        
+
         if image[0].shape:
             anchors_centers = np.vstack([(anchors[:, 0] + anchors[:, 2]) / 2, (anchors[:, 1] + anchors[:, 3]) / 2]).T
             indices = np.logical_or(anchors_centers[:, 0] >= image.shape[1], anchors_centers[:, 1] >= image.shape[0])
@@ -134,6 +135,7 @@ def anchor_targets_bbox(
             #ADDENDUM DEPTH
             depths_batch[index, indices, -1] = -1
         
+        print('debug after -1 (dropped)')
         import IPython;IPython.embed()
     return regression_batch, labels_batch, depths_batch
 
@@ -159,6 +161,10 @@ def compute_gt_annotations(
     """
 
     overlaps = compute_overlap(anchors.astype(np.float64), annotations.astype(np.float64))
+   
+    print('debug after computing overlap')
+    import IPython;IPython.embed()
+
     argmax_overlaps_inds = np.argmax(overlaps, axis=1)
     max_overlaps = overlaps[np.arange(overlaps.shape[0]), argmax_overlaps_inds]
 

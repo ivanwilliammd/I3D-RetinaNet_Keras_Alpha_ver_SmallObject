@@ -94,6 +94,10 @@ def anchor_targets_bbox(
 
     # compute labels and regression targets
     for index, (image, annotations) in enumerate(zip(image_group, annotations_group)):
+        
+        print('debug before starting 0, 1, -1 decision making')
+        import IPython;IPython.embed()
+
         if annotations['bboxes'].shape[0]:
             # obtain indices of gt annotations with the greatest overlap
             positive_indices, ignore_indices, argmax_overlaps_inds = compute_gt_annotations(anchors, annotations['bboxes'], negative_overlap, positive_overlap)

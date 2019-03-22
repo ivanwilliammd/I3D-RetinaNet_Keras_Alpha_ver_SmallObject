@@ -9,7 +9,7 @@ keras_retinanet/bin/train.py --step 2 --epoch 5 csv ../i3d_dataset_OLD/LungNodul
 
 
 BATCH SIZE 64
-keras_retinanet/bin/train.py --step 187 --epoch 2 --lr 1e-8 csv ../i3d_hdf5_lung_data/lung_nodule_annotation.csv ../i3d_hdf5_lung_data/ClassID.csv --val-annotations ../i3d_dataset_OLD/LungNoduleRevision.csv
+keras_retinanet/bin/train.py --step 187 --epoch 2 csv ../i3d_hdf5_lung_data/lung_nodule_annotation.csv ../i3d_hdf5_lung_data/ClassID.csv --val-annotations ../i3d_dataset_OLD/LungNoduleRevision.csv
 
 
 

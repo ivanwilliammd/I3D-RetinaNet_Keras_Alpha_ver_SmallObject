@@ -148,6 +148,9 @@ class Generator(keras.utils.Sequence):
             assert('bboxes' in annotations), '\'load_annotations\' should return a list of dictionaries that contain \'labels\', \'depths\', and \'bboxes\'.'
             #ADDENDUM DEPTH
             assert('depths' in annotations), '\'load_annotations\' should return a list of dictionaries that contain \'labels\', \'depths\', and \'bboxes\'.'
+        
+        print('debug load_annotations_group --> cek annotation bboxes')
+        import IPython;IPython.embed()
 
         return annotations_group
 
@@ -178,11 +181,17 @@ class Generator(keras.utils.Sequence):
                 for k in annotations_group[index].keys():
                     annotations_group[index][k] = np.delete(annotations[k], invalid_indices, axis=0)
 
+        print('debug filter_annotations --> cek annotation bboxes')
+        import IPython;IPython.embed()
+        
         return image_group, annotations_group
 
     def load_image_group(self, group):
         """ Load images for all images in a group.
         """
+        print('debug load_image_group --> cek annotation bboxes')
+        import IPython;IPython.embed()
+
         return [self.load_image(image_index) for image_index in group]
 
     def random_transform_group_entry(self, image, annotations, transform=None):
@@ -212,6 +221,9 @@ class Generator(keras.utils.Sequence):
         for index in range(len(image_group)):
             # transform a single group entry
             image_group[index], annotations_group[index] = self.random_transform_group_entry(image_group[index], annotations_group[index])
+
+        print('debug random_transform_group --> cek annotation bboxes')
+        import IPython;IPython.embed()
 
         return image_group, annotations_group
 
@@ -245,6 +257,9 @@ class Generator(keras.utils.Sequence):
         for index in range(len(image_group)):
             # preprocess a single group entry
             image_group[index], annotations_group[index] = self.preprocess_group_entry(image_group[index], annotations_group[index])
+
+        print('debug preprocess_group --> cek annotation bboxes')
+        import IPython;IPython.embed()
 
         return image_group, annotations_group
 

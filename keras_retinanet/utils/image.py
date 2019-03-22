@@ -77,12 +77,18 @@ def adjust_transform_for_image(transform, image, relative_translation):
     """
     depth, height, width, channels = image.shape
 
+    print('debug adjust_transform_for_image --> cek depth, height, width, channels')
+    import IPython;IPython.embed()
+
     result = transform
+
+    print('debug adjust_transform_for_image --> cek result sebelum relative_translation')
+    import IPython;IPython.embed()
 
     # Scale the translation with the image size if specified.
     if relative_translation:
         # result[0:2, 2] *= [width, height]
-        result[1:3, 3] *= [width, height]
+        result[0:2, 2] *= [width, height]
     # Move the origin of transformation.
     # result = change_transform_origin(transform, (0.5 * width, 0.5 * height))
 

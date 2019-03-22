@@ -195,8 +195,8 @@ def change_transform_origin(transform, center):
     Returns
         translate(center) * transform * translate(-center)
     """
-    print('debug change_transform_origin !!!!!!!!! CITO --> center & transform')
-    import IPython;IPython.embed()
+    # print('debug change_transform_origin !!!!!!!!! CITO --> center & transform')
+    # import IPython;IPython.embed()
 
     center = np.array(center)
     return np.linalg.multi_dot([translation(center), transform, translation(-center)])

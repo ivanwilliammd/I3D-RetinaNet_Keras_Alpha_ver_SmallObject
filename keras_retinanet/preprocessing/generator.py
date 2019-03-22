@@ -270,8 +270,8 @@ class Generator(keras.utils.Sequence):
             # preprocess a single group entry
             image_group[index], annotations_group[index] = self.preprocess_group_entry(image_group[index], annotations_group[index])
 
-        print('debug preprocess_group --> cek annotation bboxes')
-        import IPython;IPython.embed()
+        # print('debug preprocess_group --> cek annotation bboxes')
+        # import IPython;IPython.embed()
 
         return image_group, annotations_group
 

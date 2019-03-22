@@ -205,22 +205,22 @@ class Generator(keras.utils.Sequence):
             if transform is None:
                 transform = adjust_transform_for_image(next(self.transform_generator), image, self.transform_parameters.relative_translation)
 
-        print('debug random_transform_group --> cek image & annot sebelum apply_transform')
-        import IPython;IPython.embed()
+            print('debug random_transform_group --> cek image & annot sebelum apply_transform')
+            import IPython;IPython.embed()
 
             # apply transformation to image
             image = apply_transform(transform[1], image, self.transform_parameters)
 
-        print('debug random_transform_group --> cek image setelah ditransform')
-        import IPython;IPython.embed()
+            print('debug random_transform_group --> cek image setelah ditransform')
+            import IPython;IPython.embed()
 
             # Transform the bounding boxes in the annotations.
             annotations['bboxes'] = annotations['bboxes'].copy()
             for index in range(annotations['bboxes'].shape[0]):
                 annotations['bboxes'][index, :] = transform_aabb(transform[0], annotations['bboxes'][index, :])
 
-        print('debug random_transform_group --> cek annotations [bboxes] setelah ditransform')
-        import IPython;IPython.embed()
+            print('debug random_transform_group --> cek annotations [bboxes] setelah ditransform')
+            import IPython;IPython.embed()
 
         return image, annotations
 

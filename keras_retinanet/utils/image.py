@@ -81,14 +81,19 @@ def adjust_transform_for_image(transform, image, relative_translation):
 
     # Scale the translation with the image size if specified.
     if relative_translation:
-        result[0:2, 2] *= [width, height]
-
+        # result[0:2, 2] *= [width, height]
+        result[1:3, 3] *= [width, height]
     # Move the origin of transformation.
     # result = change_transform_origin(transform, (0.5 * width, 0.5 * height))
 
     # return result
+    print('debug adjust_transform_for_image --> cek result SEBELUM change_transform_origin')
+    import IPython;IPython.embed()
 
     result = change_transform_origin(transform, (0.5 * width, 0.5 * height))
+
+    print('debug adjust_transform_for_image --> cek result SETELAH change_transform_origin')
+    import IPython;IPython.embed()
 
     result_array=np.stack((result, result, result, result, result, result, result, result,
         result, result, result, result, result, result, result, result,

@@ -95,8 +95,8 @@ def anchor_targets_bbox(
     # compute labels and regression targets
     for index, (image, annotations) in enumerate(zip(image_group, annotations_group)):
         
-        print('debug before starting 0, 1, -1 decision making')
-        import IPython;IPython.embed()
+        # print('debug before starting 0, 1, -1 decision making')
+        # import IPython;IPython.embed()
 
         if annotations['bboxes'].shape[0]:
             # obtain indices of gt annotations with the greatest overlap
@@ -127,8 +127,8 @@ def anchor_targets_bbox(
 
         # ignore annotations outside of image
         # if image.shape:
-        print('debug after 0 and 1 (background & foreground)')
-        import IPython;IPython.embed()
+        # print('debug after 0 and 1 (background & foreground)')
+        # import IPython;IPython.embed()
 
         if image.shape:
             anchors_centers = np.vstack([(anchors[:, 0] + anchors[:, 2]) / 2, (anchors[:, 1] + anchors[:, 3]) / 2]).T
@@ -166,8 +166,8 @@ def compute_gt_annotations(
 
     overlaps = compute_overlap(anchors.astype(np.float64), annotations.astype(np.float64))
    
-    print('debug after computing overlap')
-    import IPython;IPython.embed()
+    # print('debug after computing overlap')
+    # import IPython;IPython.embed()
 
     argmax_overlaps_inds = np.argmax(overlaps, axis=1)
     max_overlaps = overlaps[np.arange(overlaps.shape[0]), argmax_overlaps_inds]

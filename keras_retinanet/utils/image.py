@@ -183,8 +183,8 @@ def apply_transform(matrix, image, params):
     i=0
     output_list=[]
     output_array=[]
-    print('DEBUG: cek image dan matrix')
-    import IPython;IPython.embed()
+    # print('DEBUG: cek image dan matrix')
+    # import IPython;IPython.embed()
 
     for i in range(len(image)):
         image_translation=image[i]

@@ -198,8 +198,8 @@ class Generator(keras.utils.Sequence):
         """ Randomly transforms image and annotation.
         """
 
-        print('debug random_transform_group --> cek image & annot sebelum randomly transform')
-        import IPython;IPython.embed()
+        # print('debug random_transform_group --> cek image & annot sebelum randomly transform')
+        # import IPython;IPython.embed()
         # randomly transform both image and annotations
         if transform is not None or self.transform_generator:
             if transform is None:

@@ -181,34 +181,46 @@ class Generator(keras.utils.Sequence):
                 for k in annotations_group[index].keys():
                     annotations_group[index][k] = np.delete(annotations[k], invalid_indices, axis=0)
 
-        print('debug filter_annotations --> cek annotation bboxes')
-        import IPython;IPython.embed()
+        # print('debug filter_annotations --> cek annotation bboxes')
+        # import IPython;IPython.embed()
         
         return image_group, annotations_group
 
     def load_image_group(self, group):
         """ Load images for all images in a group.
         """
-        print('debug load_image_group --> cek annotation bboxes')
-        import IPython;IPython.embed()
+        # print('debug load_image_group --> cek annotation bboxes')
+        # import IPython;IPython.embed()
 
         return [self.load_image(image_index) for image_index in group]
 
     def random_transform_group_entry(self, image, annotations, transform=None):
         """ Randomly transforms image and annotation.
         """
+
+        print('debug random_transform_group --> cek image & annot sebelum randomly transform')
+        import IPython;IPython.embed()
         # randomly transform both image and annotations
         if transform is not None or self.transform_generator:
             if transform is None:
                 transform = adjust_transform_for_image(next(self.transform_generator), image, self.transform_parameters.relative_translation)
 
+        print('debug random_transform_group --> cek image & annot sebelum apply_transform')
+        import IPython;IPython.embed()
+
             # apply transformation to image
             image = apply_transform(transform[1], image, self.transform_parameters)
+
+        print('debug random_transform_group --> cek image setelah ditransform')
+        import IPython;IPython.embed()
 
             # Transform the bounding boxes in the annotations.
             annotations['bboxes'] = annotations['bboxes'].copy()
             for index in range(annotations['bboxes'].shape[0]):
                 annotations['bboxes'][index, :] = transform_aabb(transform[0], annotations['bboxes'][index, :])
+
+        print('debug random_transform_group --> cek annotations [bboxes] setelah ditransform')
+        import IPython;IPython.embed()
 
         return image, annotations
 

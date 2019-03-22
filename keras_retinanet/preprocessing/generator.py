@@ -149,8 +149,8 @@ class Generator(keras.utils.Sequence):
             #ADDENDUM DEPTH
             assert('depths' in annotations), '\'load_annotations\' should return a list of dictionaries that contain \'labels\', \'depths\', and \'bboxes\'.'
         
-        print('debug load_annotations_group --> cek annotation bboxes')
-        import IPython;IPython.embed()
+        # print('debug load_annotations_group --> cek annotation bboxes')
+        # import IPython;IPython.embed()
 
         return annotations_group
 
@@ -209,7 +209,7 @@ class Generator(keras.utils.Sequence):
             import IPython;IPython.embed()
 
             # apply transformation to image
-            image = apply_transform(transform[1], image, self.transform_parameters)
+            image = apply_transform(transform, image, self.transform_parameters)
 
             print('debug random_transform_group --> cek image setelah ditransform')
             import IPython;IPython.embed()
@@ -217,7 +217,7 @@ class Generator(keras.utils.Sequence):
             # Transform the bounding boxes in the annotations.
             annotations['bboxes'] = annotations['bboxes'].copy()
             for index in range(annotations['bboxes'].shape[0]):
-                annotations['bboxes'][index, :] = transform_aabb(transform[0], annotations['bboxes'][index, :])
+                annotations['bboxes'][index, :] = transform_aabb(transform, annotations['bboxes'][index, :])
 
             print('debug random_transform_group --> cek annotations [bboxes] setelah ditransform')
             import IPython;IPython.embed()

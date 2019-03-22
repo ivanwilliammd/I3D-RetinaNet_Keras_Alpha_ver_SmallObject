@@ -77,36 +77,36 @@ def adjust_transform_for_image(transform, image, relative_translation):
     """
     depth, height, width, channels = image.shape
 
-    print('debug adjust_transform_for_image --> cek depth, height, width, channels')
-    import IPython;IPython.embed()
+    # print('debug adjust_transform_for_image --> cek depth, height, width, channels')
+    # import IPython;IPython.embed()
 
     result = transform
 
-    print('debug adjust_transform_for_image --> cek result sebelum relative_translation')
-    import IPython;IPython.embed()
+    # print('debug adjust_transform_for_image --> cek result sebelum relative_translation')
+    # import IPython;IPython.embed()
 
     # Scale the translation with the image size if specified.
     if relative_translation:
         # result[0:2, 2] *= [width, height]
         result[0:2, 2] *= [width, height]
     # Move the origin of transformation.
-    # result = change_transform_origin(transform, (0.5 * width, 0.5 * height))
-
-    # return result
-    print('debug adjust_transform_for_image --> cek result SEBELUM change_transform_origin')
-    import IPython;IPython.embed()
-
     result = change_transform_origin(transform, (0.5 * width, 0.5 * height))
 
-    print('debug adjust_transform_for_image --> cek result SETELAH change_transform_origin')
-    import IPython;IPython.embed()
+    return result
+    # # print('debug adjust_transform_for_image --> cek result SEBELUM change_transform_origin')
+    # # import IPython;IPython.embed()
 
-    result_array=np.stack((result, result, result, result, result, result, result, result,
-        result, result, result, result, result, result, result, result,
-        result, result, result, result, result, result, result, result,
-        result, result, result, result, result, result, result, result), axis=0)
+    # result = change_transform_origin(transform, (0.5 * width, 0.5 * height))
 
-    return result, result_array
+    # print('debug adjust_transform_for_image --> cek result SETELAH change_transform_origin')
+    # import IPython;IPython.embed()
+
+    # result_array=np.stack((result, result, result, result, result, result, result, result,
+    #     result, result, result, result, result, result, result, result,
+    #     result, result, result, result, result, result, result, result,
+    #     result, result, result, result, result, result, result, result), axis=0)
+
+    # return result, result_array
 
 
 class TransformParameters:
@@ -183,16 +183,26 @@ def apply_transform(matrix, image, params):
     i=0
     output_list=[]
     output_array=[]
-    
+    print('DEBUG: cek image dan matrix')
+    import IPython;IPython.embed()
+
     for i in range(len(image)):
+        image_translation=image[i]
         output = cv2.warpAffine(
-            image[i],
-            matrix[i][:2, :],
-            dsize       = (image[i].shape[1], image[i].shape[0]),
+            image_translation, matrix[:2, :],
+            dsize       = (image_translation.shape[1], image_translation.shape[0]),
             flags       = params.cvInterpolation(),
             borderMode  = params.cvBorderMode(),
             borderValue = params.cval,
-        )
+        )        
+        # output = cv2.warpAffine(
+        #     image,
+        #     matrix[:2, :],
+        #     dsize       = (image[i].shape[1], image[i].shape[0]),
+        #     flags       = params.cvInterpolation(),
+        #     borderMode  = params.cvBorderMode(),
+        #     borderValue = params.cval,
+        # )
         output_list.append(output)
         # i=i+1
         

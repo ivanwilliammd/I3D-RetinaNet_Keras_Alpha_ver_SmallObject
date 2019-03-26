@@ -63,9 +63,15 @@ def filter_detections(
             # filter indices based on NMS
             indices = keras.backend.gather(indices, nms_indices)
 
+        # print('\ndebug FilterDetections _filter_detections')
+        # import IPython;IPython.embed()
+
         # add indices to list of all indices
         labels = backend.gather_nd(labels, indices)
         indices = keras.backend.stack([indices[:, 0], labels], axis=1)
+
+        # print('\ndebug FilterDetections labels dan indices')
+        # import IPython;IPython.embed()
 
         return indices
 
@@ -83,6 +89,9 @@ def filter_detections(
         scores  = keras.backend.max(classification, axis    = 1)
         labels  = keras.backend.argmax(classification, axis = 1)
         indices = _filter_detections(scores, labels)
+
+    # print('\ndebug FilterDetections scores, labels, indices')
+    # import IPython;IPython.embed()
 
     # select top k
     scores              = backend.gather_nd(classification, indices)
@@ -102,6 +111,9 @@ def filter_detections(
     labels   = backend.pad(labels, [[0, pad_size]], constant_values=-1)
     labels   = keras.backend.cast(labels, 'int32')
     other_   = [backend.pad(o, [[0, pad_size]] + [[0, 0] for _ in range(1, len(o.shape))], constant_values=-1) for o in other_]
+
+    # print('\ndebug FilterDetections scores, labels, indices AFTER ZERO PADDING')
+    # import IPython;IPython.embed()
 
     # set shapes, since we know what they are
     boxes.set_shape([max_detections, 4])
@@ -156,6 +168,9 @@ class FilterDetections(keras.layers.Layer):
         # depthsification= inputs[2]
         # other          = inputs[3:]
         other          = inputs[2:]
+        
+        # print('debug FilterDetections input[0]-[2]')
+        # import IPython;IPython.embed()
 
         # wrap nms with our parameters
         def _filter_detections(args):
@@ -177,6 +192,9 @@ class FilterDetections(keras.layers.Layer):
                 nms_threshold         = self.nms_threshold,
             )
 
+        # print('debug FilterDetections after NMS')
+        # import IPython;IPython.embed()
+
         # call filter_detections on each batch
         outputs = backend.map_fn(
             _filter_detections,
@@ -184,6 +202,9 @@ class FilterDetections(keras.layers.Layer):
             dtype=[keras.backend.floatx(), keras.backend.floatx(), 'int32'] + [o.dtype for o in other],
             parallel_iterations=self.parallel_iterations
         )
+
+        # print('debug outputs after map_fn')
+        # import IPython;IPython.embed()
 
         return outputs
 

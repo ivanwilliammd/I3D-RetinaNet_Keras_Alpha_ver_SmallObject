@@ -86,27 +86,30 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         # boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))[:3]
         boxes, scores, labels = model.predict_on_batch(imagesss)[:3]
 
-        print('debug boxes, scores, labels sebelum rescale')
-        import IPython;IPython.embed()
+        # print('debug boxes, scores, labels sebelum rescale')
+        # import IPython;IPython.embed()
 
         # correct boxes for image scale
         boxes /= scale
-        print('debug boxes AFTER rescale')
-        import IPython;IPython.embed()
+        # print('debug boxes AFTER rescale')
+        # import IPython;IPython.embed()
 
         # select indices which have a score above the threshold
         indices = np.where(scores[0, :] > score_threshold)[0]
-        print('Indices')
-        import IPython;IPython.embed()
+        # print('debug Indices')
+        # import IPython;IPython.embed()
 
         # select those scores
         scores = scores[0][indices]
-        print('debug scores')
-        import IPython;IPython.embed()
+        # print('debug scores')
+        # import IPython;IPython.embed()
 
         # find the order with which to sort the scores
         scores_sort = np.argsort(-scores)[:max_detections]
-        print('debug scores_sort')
+        # print('debug scores_sort')
+        # import IPython;IPython.embed()
+
+        print('\ndebug _get_detections boxes, scores, scores_sort, labels')
         import IPython;IPython.embed()
 
         # select detections
@@ -114,7 +117,8 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         image_scores     = scores[scores_sort]
         image_labels     = labels[0, indices[scores_sort]]
         image_detections = np.concatenate([image_boxes, np.expand_dims(image_scores, axis=1), np.expand_dims(image_labels, axis=1)], axis=1)
-        print('debug select detection')
+        
+        print('\ndebug _get_detections boxes, scores, labels')
         import IPython;IPython.embed()
 
         if save_path is not None:
@@ -122,6 +126,7 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
             draw_detections(raw_image, image_boxes, image_scores, image_labels, label_to_name=generator.label_to_name)
 
             cv2.imwrite(os.path.join(save_path, '{}.png'.format(i)), raw_image)
+        
         print('debug draw the image')
         import IPython;IPython.embed()
 
@@ -131,7 +136,8 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
                 continue
 
             all_detections[i][label] = image_detections[image_detections[:, -1] == label, :-1]
-        print('all_detections')
+        
+        print('debug all_detections')
         import IPython;IPython.embed()
 
     return all_detections
@@ -154,8 +160,8 @@ def _get_annotations(generator):
         # load the annotations
         annotations = generator.load_annotations(i)
         
-        print('generator load_annotations')
-        import IPython;IPython.embed()
+        # print('generator load_annotations')
+        # import IPython;IPython.embed()
 
         # copy detections to all_annotations
         for label in range(generator.num_classes()):
@@ -164,8 +170,9 @@ def _get_annotations(generator):
 
             all_annotations[i][label] = annotations['bboxes'][annotations['labels'] == label, :].copy()
 
-        print('debug all_annotations')
-        import IPython;IPython.embed()
+    print('\n debug _get_annotations/all_annotations')
+    import IPython;IPython.embed()
+
     return all_annotations
 
 
@@ -209,8 +216,8 @@ def evaluate(
         scores          = np.zeros((0,))
         num_annotations = 0.0
 
-        print('debug FP, TP, score')
-        import IPython;IPython.embed()
+        # print('debug FP, TP, score')
+        # import IPython;IPython.embed()
 
         for i in range(generator.size()):
             detections           = all_detections[i][label]
@@ -238,8 +245,8 @@ def evaluate(
                     false_positives = np.append(false_positives, 1)
                     true_positives  = np.append(true_positives, 0)
             
-            print('debug FP, TP')
-            import IPython;IPython.embed()
+        # print('debug FP, TP')
+        # import IPython;IPython.embed()
         # no annotations -> AP for this class is 0 (is this correct?)
         if num_annotations == 0:
             average_precisions[label] = 0, 0
@@ -258,7 +265,7 @@ def evaluate(
         recall    = true_positives / num_annotations
         precision = true_positives / np.maximum(true_positives + false_positives, np.finfo(np.float64).eps)
 
-        print('debug recall, precision')
+        print('debug FP, TP, recall, precision')
         import IPython;IPython.embed()
 
         # compute average precision

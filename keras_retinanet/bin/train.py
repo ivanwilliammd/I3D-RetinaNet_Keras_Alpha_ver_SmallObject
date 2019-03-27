@@ -606,6 +606,7 @@ def main(args=None):
             optimizer=keras.optimizers.adam(lr=1e-5, clipnorm=0.001)
         )
 
+    print('bin/train.py | line 610 | debug before fit_generator')
     import IPython; IPython.embed()
 
     # create the callbacks

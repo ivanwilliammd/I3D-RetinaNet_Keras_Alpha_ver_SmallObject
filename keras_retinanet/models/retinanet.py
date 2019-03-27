@@ -452,11 +452,11 @@ def retinanet_bbox(
     other = model.outputs[2:]
 
     # apply predicted regression to anchors
-    boxes = layers.RegressBoxes(name='boxes')([anchors, regression])
+    boxes_regress = layers.RegressBoxes(name='boxes')([anchors, regression])
     # print('debug RegressBoxes')
     # import IPython;IPython.embed()
 
-    boxes = layers.ClipBoxes(name='clipped_boxes')([model.inputs[0], boxes])
+    boxes = layers.ClipBoxes(name='clipped_boxes')([model.inputs[0], boxes_regress])
     # print('debug ClipBoxes')
     # import IPython;IPython.embed()
 
@@ -471,4 +471,4 @@ def retinanet_bbox(
 
     # construct the model
     # return keras.models.Model(inputs=model.inputs, outputs=detections, name=name)
-    return keras.models.Model(inputs=model.inputs, outputs=boxes, name=name)
+    return keras.models.Model(inputs=model.inputs, outputs=boxes_regress, name=name)

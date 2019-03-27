@@ -86,8 +86,8 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))[:3]
         # boxes, scores, labels = model.predict_on_batch(imagesss)[:3]
 
-        print('debug boxes, scores, labels sebelum rescale')
-        import IPython;IPython.embed()
+        # print('debug boxes, scores, labels sebelum rescale')
+        # import IPython;IPython.embed()
 
         # correct boxes for image scale
         boxes /= scale

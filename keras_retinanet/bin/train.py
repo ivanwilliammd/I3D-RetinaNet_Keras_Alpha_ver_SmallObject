@@ -606,7 +606,7 @@ def main(args=None):
             optimizer=keras.optimizers.adam(lr=1e-5, clipnorm=0.001)
         )
 
-    # import IPython; IPython.embed()
+    import IPython; IPython.embed()
 
     # create the callbacks
     callbacks = create_callbacks(

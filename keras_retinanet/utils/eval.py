@@ -170,8 +170,8 @@ def _get_annotations(generator):
 
             all_annotations[i][label] = annotations['bboxes'][annotations['labels'] == label, :].copy()
 
-    print('\n debug _get_annotations/all_annotations')
-    import IPython;IPython.embed()
+    # print('\n debug _get_annotations/all_annotations')
+    # import IPython;IPython.embed()
 
     return all_annotations
 
@@ -265,14 +265,14 @@ def evaluate(
         recall    = true_positives / num_annotations
         precision = true_positives / np.maximum(true_positives + false_positives, np.finfo(np.float64).eps)
 
-        print('debug FP, TP, recall, precision')
-        import IPython;IPython.embed()
+        # print('debug FP, TP, recall, precision')
+        # import IPython;IPython.embed()
 
         # compute average precision
         average_precision  = _compute_ap(recall, precision)
         average_precisions[label] = average_precision, num_annotations
 
-        print('debug average_precision & average_precisions')
-        import IPython;IPython.embed()
+        # print('debug average_precision & average_precisions')
+        # import IPython;IPython.embed()
 
     return average_precisions

@@ -453,12 +453,12 @@ def retinanet_bbox(
 
     # apply predicted regression to anchors
     boxes = layers.RegressBoxes(name='boxes')([anchors, regression])
-    print('debug RegressBoxes')
-    import IPython;IPython.embed()
+    # print('debug RegressBoxes')
+    # import IPython;IPython.embed()
 
     boxes = layers.ClipBoxes(name='clipped_boxes')([model.inputs[0], boxes])
-    print('debug ClipBoxes')
-    import IPython;IPython.embed()
+    # print('debug ClipBoxes')
+    # import IPython;IPython.embed()
 
     # filter detections (apply NMS / score threshold / select top-k)
     detections = layers.FilterDetections(
@@ -466,8 +466,8 @@ def retinanet_bbox(
         class_specific_filter = class_specific_filter,
         name                  = 'filtered_detections'
     )([boxes, classification] + other)
-    print('debug detections')
-    import IPython;IPython.embed()
+    # print('debug detections')
+    # import IPython;IPython.embed()
 
     # construct the model
     return keras.models.Model(inputs=model.inputs, outputs=detections, name=name)

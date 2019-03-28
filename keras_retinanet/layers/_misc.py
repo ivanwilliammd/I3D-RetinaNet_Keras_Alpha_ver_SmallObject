@@ -174,8 +174,8 @@ class ClipBoxes(keras.layers.Layer):
             height = shape[2]
             width  = shape[3]
         else:
-            height = shape[1]
-            width  = shape[2]
+            height = shape[2]
+            width  = shape[3]
         x1 = backend.clip_by_value(boxes[:, :, 0], 0, width)
         y1 = backend.clip_by_value(boxes[:, :, 1], 0, height)
         x2 = backend.clip_by_value(boxes[:, :, 2], 0, width)

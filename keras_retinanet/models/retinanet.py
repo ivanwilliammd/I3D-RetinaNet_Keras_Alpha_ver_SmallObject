@@ -473,4 +473,4 @@ def retinanet_bbox(
 
     # construct the model
     # return keras.models.Model(inputs=model.inputs, outputs=detections, name=name)
-    return keras.models.Model(inputs=model.inputs, outputs=boxes_regress, name=name)
+    return keras.models.Model(inputs=model.inputs, outputs=boxes, name=name)

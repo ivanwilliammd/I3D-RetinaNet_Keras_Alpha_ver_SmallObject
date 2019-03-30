@@ -514,7 +514,7 @@ def main(args=None):
     
     rgb_model = Inception_Inflated3d(
         include_top=False,
-        weights='rgb_imagenet_and_kinetics',
+        # weights='rgb_imagenet_and_kinetics',
         input_shape=img_input_ret,
         classes=NUM_CLASSES)
 
@@ -608,8 +608,8 @@ def main(args=None):
             optimizer=keras.optimizers.adam(lr=1e-5, clipnorm=0.001)
         )
 
-    print('bin/train.py | line 610 | debug before fit_generator')
-    import IPython; IPython.embed()
+    # print('bin/train.py | line 610 | debug before fit_generator')
+    # import IPython; IPython.embed()
 
     # create the callbacks
     callbacks = create_callbacks(

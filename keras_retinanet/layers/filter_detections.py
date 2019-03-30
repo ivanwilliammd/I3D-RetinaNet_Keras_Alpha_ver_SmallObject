@@ -173,7 +173,7 @@ class FilterDetections(keras.layers.Layer):
         
         # print('debug FilterDetections input[0]-[2]')
         # import IPython;IPython.embed()
-        classification = classification + 0.05
+        classification = classification + 0.5
         # wrap nms with our parameters
         def _filter_detections(args):
             boxes          = args[0]

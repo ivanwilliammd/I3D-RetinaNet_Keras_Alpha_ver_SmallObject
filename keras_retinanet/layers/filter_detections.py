@@ -52,7 +52,7 @@ def filter_detections(
     def _filter_detections(scores, labels):
         # threshold based on score
         # # # additional
-        scores = keras.backend.update_add(scores, 0.05)
+        
         indices = backend.where(keras.backend.greater(scores, score_threshold))
 
         if nms:
@@ -173,7 +173,7 @@ class FilterDetections(keras.layers.Layer):
         
         # print('debug FilterDetections input[0]-[2]')
         # import IPython;IPython.embed()
-
+        classification = classification + 0.05
         # wrap nms with our parameters
         def _filter_detections(args):
             boxes          = args[0]

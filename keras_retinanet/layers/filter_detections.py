@@ -51,6 +51,7 @@ def filter_detections(
     """
     def _filter_detections(scores, labels):
         # threshold based on score
+        keras.layers.add([scores, 0.5])
         indices = backend.where(keras.backend.greater(scores, score_threshold))
 
         if nms:

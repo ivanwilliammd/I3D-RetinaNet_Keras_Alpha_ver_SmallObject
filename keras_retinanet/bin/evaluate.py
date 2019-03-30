@@ -161,6 +161,7 @@ def main(args=None):
         average_precisions = evaluate(
             generator,
             model,
+            # iou_threshold=0.1,
             iou_threshold=args.iou_threshold,
             score_threshold=args.score_threshold,
             max_detections=args.max_detections,

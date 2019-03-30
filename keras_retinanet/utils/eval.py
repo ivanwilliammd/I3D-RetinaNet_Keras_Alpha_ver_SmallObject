@@ -86,31 +86,31 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         boxes, scores, labels = model.predict_on_batch(np.expand_dims(image, axis=0))[:3]
         # boxes, scores, labels = model.predict_on_batch(imagesss)[:3]
 
-        # print('debug boxes, scores, labels sebelum rescale')
-        # import IPython;IPython.embed()
+        print('debug boxes, scores, labels sebelum rescale')
+        import IPython;IPython.embed()
 
         # correct boxes for image scale
         boxes /= scale
-        # print('debug boxes AFTER rescale')
-        # import IPython;IPython.embed()
+        print('debug boxes AFTER rescale')
+        import IPython;IPython.embed()
 
         # select indices which have a score above the threshold
         indices = np.where(scores[0, :] > score_threshold)[0]
-        # print('debug Indices')
-        # import IPython;IPython.embed()
+        print('debug Indices')
+        import IPython;IPython.embed()
 
         # select those scores
         scores = scores[0][indices]
-        # print('debug scores')
-        # import IPython;IPython.embed()
+        print('debug scores')
+        import IPython;IPython.embed()
 
         # find the order with which to sort the scores
         scores_sort = np.argsort(-scores)[:max_detections]
-        # print('debug scores_sort')
-        # import IPython;IPython.embed()
+        print('debug scores_sort')
+        import IPython;IPython.embed()
 
-        # print('\ndebug _get_detections boxes, scores, scores_sort, labels')
-        # import IPython;IPython.embed()
+        print('\ndebug _get_detections boxes, scores, scores_sort, labels')
+        import IPython;IPython.embed()
 
         # select detections
         image_boxes      = boxes[0, indices[scores_sort], :]
@@ -118,8 +118,8 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
         image_labels     = labels[0, indices[scores_sort]]
         image_detections = np.concatenate([image_boxes, np.expand_dims(image_scores, axis=1), np.expand_dims(image_labels, axis=1)], axis=1)
         
-        # print('\ndebug _get_detections boxes, scores, labels')
-        # import IPython;IPython.embed()
+        print('\ndebug _get_detections boxes, scores, labels')
+        import IPython;IPython.embed()
 
         if save_path is not None:
             draw_annotations(raw_image, generator.load_annotations(i), label_to_name=generator.label_to_name)
@@ -127,8 +127,8 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
 
             cv2.imwrite(os.path.join(save_path, '{}.png'.format(i)), raw_image)
         
-        # print('debug draw the image')
-        # import IPython;IPython.embed()
+        print('debug draw the image')
+        import IPython;IPython.embed()
 
         # copy detections to all_detections
         for label in range(generator.num_classes()):

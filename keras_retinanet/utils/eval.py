@@ -272,7 +272,7 @@ def evaluate(
         average_precision  = _compute_ap(recall, precision)
         average_precisions[label] = average_precision, num_annotations
 
-        # print('debug average_precision & average_precisions')
-        # import IPython;IPython.embed()
+        print('debug average_precision & average_precisions')
+        import IPython;IPython.embed()
 
     return average_precisions

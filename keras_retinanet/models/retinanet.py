@@ -466,6 +466,7 @@ def retinanet_bbox(
     detections = layers.FilterDetections(
         nms                   = nms,
         class_specific_filter = class_specific_filter,
+        score_threshold       = 0,
         name                  = 'filtered_detections'
     )([boxes, classification] + other)
     # print('debug detections')
@@ -473,4 +474,4 @@ def retinanet_bbox(
 
     # construct the model
     # return keras.models.Model(inputs=model.inputs, outputs=detections, name=name)
-    return keras.models.Model(inputs=model.inputs, outputs=boxes, name=name)
+    return keras.models.Model(inputs=model.inputs, outputs=detections, name=name)

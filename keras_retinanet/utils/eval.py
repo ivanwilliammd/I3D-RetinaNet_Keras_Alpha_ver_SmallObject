@@ -137,8 +137,8 @@ def _get_detections(generator, model, score_threshold=0.05, max_detections=100, 
 
             all_detections[i][label] = image_detections[image_detections[:, -1] == label, :-1]
         
-        # print('debug all_detections')
-        # import IPython;IPython.embed()
+        print('debug all_detections')
+        import IPython;IPython.embed()
 
     return all_detections
 

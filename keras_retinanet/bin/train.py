@@ -514,7 +514,7 @@ def main(args=None):
     
     rgb_model = Inception_Inflated3d(
         include_top=False,
-        # weights='rgb_imagenet_and_kinetics',
+        weights='rgb_imagenet_and_kinetics',
         input_shape=img_input_ret,
         classes=NUM_CLASSES)
 

@@ -466,7 +466,7 @@ def retinanet_bbox(
     detections = layers.FilterDetections(
         nms                   = nms,
         class_specific_filter = class_specific_filter,
-        score_threshold       = 0,
+        score_threshold       = 0.,
         name                  = 'filtered_detections'
     )([boxes, classification] + other)
     # print('debug detections')

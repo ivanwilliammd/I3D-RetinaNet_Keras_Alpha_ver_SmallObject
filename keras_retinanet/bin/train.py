@@ -180,7 +180,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
             # use prediction model for evaluation
             evaluation = CocoEval(validation_generator, tensorboard=tensorboard_callback)
         else:
-            evaluation = Evaluate(validation_generator, tensorboard=tensorboard_callback, weighted_average=args.weighted_average, iou_threshold=0.1)
+            evaluation = Evaluate(validation_generator, tensorboard=tensorboard_callback, weighted_average=args.weighted_average, iou_threshold=0.1, score_threshold=0.)
         evaluation = RedirectModel(evaluation, prediction_model)
         callbacks.append(evaluation)
 
@@ -624,7 +624,7 @@ def main(args=None):
     else:
         use_multiprocessing = False
 
-    
+
     # start training
     training_model.fit_generator(
         generator=train_generator,

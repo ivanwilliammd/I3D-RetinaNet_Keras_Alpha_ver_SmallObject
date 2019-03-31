@@ -510,7 +510,7 @@ def main(args=None):
     # FRAME_HEIGHT = 512
     # FRAME_WIDTH = 512
     # NUM_RGB_CHANNELS = 3
-    NUM_CLASSES = 4
+    NUM_CLASSES = train_generator.num_classes()
     
     rgb_model = Inception_Inflated3d(
         include_top=False,

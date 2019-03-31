@@ -181,7 +181,7 @@ def create_callbacks(model, training_model, prediction_model, validation_generat
             evaluation = CocoEval(validation_generator, tensorboard=tensorboard_callback)
         else:
             evaluation = Evaluate(validation_generator, tensorboard=tensorboard_callback, weighted_average=args.weighted_average, 
-                iou_threshold=0.2, 
+                iou_threshold=0.3, 
                 # iou_threshold=0.5, 
                 score_threshold=0.)
         evaluation = RedirectModel(evaluation, prediction_model)

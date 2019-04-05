@@ -267,6 +267,8 @@ def anchors_for_shape(
         shapes_callback = guess_shapes
     image_shapes = shapes_callback(image_shape, pyramid_levels)
 
+    print('image_shapes')
+    import IPython;IPython.embed()
     # compute anchors over all pyramid levels
     all_anchors = np.zeros((0, 4))
     for idx, p in enumerate(pyramid_levels):
@@ -277,7 +279,8 @@ def anchors_for_shape(
         )
         shifted_anchors = shift(image_shapes[idx], anchor_params.strides[idx], anchors)
         all_anchors     = np.append(all_anchors, shifted_anchors, axis=0)
-
+    print('after enumerate')
+    import IPython;IPython.embed()
     return all_anchors
 
 
@@ -297,7 +300,9 @@ def shift(shape, stride, anchors):
     shift_x = (np.arange(0, shape[2]) + 0.5) * stride
     shift_y = (np.arange(0, shape[1]) + 0.5) * stride
     shift_x, shift_y = np.meshgrid(shift_x, shift_y)
-
+    print('anchors_shift')
+    import IPython;IPython.embed()
+    
     shifts = np.vstack((
         shift_x.ravel(), shift_y.ravel(),
         shift_x.ravel(), shift_y.ravel()
@@ -348,6 +353,8 @@ def generate_anchors(base_size=16, ratios=None, scales=None):
     anchors[:, 0::2] -= np.tile(anchors[:, 2] * 0.5, (2, 1)).T
     anchors[:, 1::2] -= np.tile(anchors[:, 3] * 0.5, (2, 1)).T
 
+    print('generate_anchors')
+    import IPython;IPython.embed()
     return anchors
 
 

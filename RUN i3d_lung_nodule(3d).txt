@@ -5,6 +5,8 @@ keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung
 
 keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Test.csv
 
+keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Test.csv
+
 
 
 sudo cp i3d-retina-rollover/data/lung_nodule_annotation_oneclasses_8_Test.csv i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Test.csv

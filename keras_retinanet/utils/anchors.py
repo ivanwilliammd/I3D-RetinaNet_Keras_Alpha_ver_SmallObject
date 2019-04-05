@@ -267,6 +267,7 @@ def anchors_for_shape(
         shapes_callback = guess_shapes
     image_shapes = shapes_callback(image_shape, pyramid_levels)
 
+    import IPython;IPython.embed()
     # compute anchors over all pyramid levels
     all_anchors = np.zeros((0, 4))
     for idx, p in enumerate(pyramid_levels):
@@ -315,8 +316,8 @@ def shift(shape, stride, anchors):
     return all_anchors
 
 
-# def generate_anchors(base_size=16, ratios=None, scales=None):
-def generate_anchors(base_size=8, ratios=None, scales=None):
+def generate_anchors(base_size=16, ratios=None, scales=None):
+# def generate_anchors(base_size=8, ratios=None, scales=None):
 
     """
     Generate anchor (reference) windows by enumerating aspect ratios X

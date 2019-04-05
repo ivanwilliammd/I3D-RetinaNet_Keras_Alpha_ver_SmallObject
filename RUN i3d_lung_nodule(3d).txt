@@ -1,11 +1,9 @@
 1 classes & 3 classes
-keras_retinanet/bin/train.py --step 10 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_Nodule32_Train.csv ../i3d_hdf5_lung_data/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_Nodule32_Test.csv
+Testing 1 class
+keras_retinanet/bin/train.py --step 3000 --epoch 50 csv ../i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_1class_2x_Training.csv ../i3d_hdf5_lung_data_resized_2x_box16/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_1class_2x_Testing.csv
 
-keras_retinanet/bin/train.py --step 10 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Test.csv
-
-keras_retinanet/bin/train.py --step 20 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_Nodule32_Train.csv ../i3d_hdf5_lung_data/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_Nodule32_Test.csv
-
-keras_retinanet/bin/train.py --step 20 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Test.csv
+Testing 3 class
+keras_retinanet/bin/train.py --step 1500 --epoch 50 csv ../i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_3class_2x_Training.csv ../i3d_hdf5_lung_data_resized_2x_box16/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_3class_2x_Testing.csv
 
 
 ##### For 2D version

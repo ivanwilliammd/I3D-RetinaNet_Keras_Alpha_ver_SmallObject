@@ -419,8 +419,8 @@ def parse_args(args):
     parser.add_argument('--no-evaluation',    help='Disable per epoch evaluation.', dest='evaluation', action='store_false')
     parser.add_argument('--freeze-backbone',  help='Freeze training of backbone layers.', action='store_true')
     parser.add_argument('--random-transform', help='Randomly transform image and annotations.', action='store_true')
-    parser.add_argument('--image-min-side',   help='Rescale the image so the smallest side is min_side.', type=int, default=512)
-    parser.add_argument('--image-max-side',   help='Rescale the image if the largest side is larger than max_side.', type=int, default=512)
+    parser.add_argument('--image-min-side',   help='Rescale the image so the smallest side is min_side.', type=int, default=1024)
+    parser.add_argument('--image-max-side',   help='Rescale the image if the largest side is larger than max_side.', type=int, default=1024)
     # parser.add_argument('--image-min-side',   help='Rescale the image so the smallest side is min_side.', type=int, default=800)
     # parser.add_argument('--image-max-side',   help='Rescale the image if the largest side is larger than max_side.', type=int, default=1333)
     parser.add_argument('--config',           help='Path to a configuration parameters .ini file.')
@@ -440,9 +440,9 @@ def img_input_retina(NUM_FRAMES, FRAME_HEIGHT, FRAME_WIDTH, NUM_RGB_CHANNELS):
     from i3d_inception import _obtain_input_shape
     input_shape_ret = _obtain_input_shape(
         input_shape,
-        default_frame_size=512, 
+        default_frame_size=1024, 
         # default_frame_size=224, 
-        min_frame_size=512, 
+        min_frame_size=1024, 
         # default_num_frames=64,
         default_num_frames=32,
         min_num_frames=8,
@@ -491,7 +491,7 @@ def main(args=None):
     train_generator, validation_generator = create_generators(args, backbone.preprocess_image)
     # import IPython; IPython.embed()
 
-    img_input_ret=img_input_retina(32, 512, 512, 3)
+    img_input_ret=img_input_retina(32, 1024, 1024, 3)
 
     from i3d_inception import Inception_Inflated3d  
     # args.eval_type='rgb'

@@ -327,7 +327,7 @@ class Generator(keras.utils.Sequence):
         # max_shape = tuple(max(image.shape[x+1] for image in image_group) for x in range(3))
         anchors   = self.generate_anchors(max_shape)
 
-        import IPython;IPython.embed()
+        # import IPython;IPython.embed()
         batches = self.compute_anchor_targets(
             anchors,
             image_group,

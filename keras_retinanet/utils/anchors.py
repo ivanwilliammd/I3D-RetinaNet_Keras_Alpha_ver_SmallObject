@@ -147,8 +147,8 @@ def anchor_targets_bbox(
             #ADDENDUM DEPTH
             depths_batch[index, indices, -1] = -1
         
-        # print('debug after -1 (dropped)')
-        # import IPython;IPython.embed()
+        print('debug after -1 (dropped)')
+        import IPython;IPython.embed()
     return regression_batch, labels_batch, depths_batch
 
 
@@ -294,11 +294,11 @@ def shift(shape, stride, anchors):
     """
 
     # create a grid starting from half stride from the top left corner
-    # shift_x = (np.arange(0, shape[1]) + 0.5) * stride
-    # shift_y = (np.arange(0, shape[0]) + 0.5) * stride
+    shift_x = (np.arange(0, shape[1]) + 0.5) * stride
+    shift_y = (np.arange(0, shape[0]) + 0.5) * stride
     
-    shift_x = (np.arange(0, shape[2]) + 0.5) * stride
-    shift_y = (np.arange(0, shape[1]) + 0.5) * stride
+    # shift_x = (np.arange(0, shape[2]) + 0.5) * stride
+    # shift_y = (np.arange(0, shape[1]) + 0.5) * stride
     shift_x, shift_y = np.meshgrid(shift_x, shift_y)
     # print('anchors_shift')
     # import IPython;IPython.embed()

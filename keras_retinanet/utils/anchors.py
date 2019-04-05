@@ -46,11 +46,11 @@ AnchorParameters.default = AnchorParameters(
     # sizes   = [32, 64, 128, 256, 512],
     # sizes   = [8, 16, 32, 64, 128],
     # sizes   = [16, 32, 64, 128, 256],
-    sizes   = [4, 8, 16, 32, 64],
+    sizes   = [8, 16, 32, 64, 128],
     # strides = [8, 16, 32, 64, 128],
     # strides = [2, 4, 8, 16, 32],
     # strides = [4, 8, 16, 32, 64],
-    strides = [1, 2, 4, 8, 16],
+    strides = [2, 4, 8, 16, 32],
     # ratios  = np.array([0.5, 1, 2], keras.backend.floatx()),
     ratios  = np.array([1,], keras.backend.floatx()),
     scales  = np.array([2 ** 0, 2 ** (1.0 / 3.0), 2 ** (2.0 / 3.0)], keras.backend.floatx()),
@@ -234,7 +234,7 @@ def guess_shapes(image_shape, pyramid_levels):
         A list of image shapes at each pyramid level.
     """
     # image_shape = np.array(image_shape[:3])
-    image_shape = np.array(image_shape[:4])
+    image_shape = np.array(image_shape[1:4])
     image_shapes = [(image_shape + 2 ** x - 1) // (2 ** x) for x in pyramid_levels]
     return image_shapes
 
@@ -267,8 +267,8 @@ def anchors_for_shape(
         shapes_callback = guess_shapes
     image_shapes = shapes_callback(image_shape, pyramid_levels)
 
-    print('image_shapes')
-    import IPython;IPython.embed()
+    # print('image_shapes')
+    # import IPython;IPython.embed()
     # compute anchors over all pyramid levels
     all_anchors = np.zeros((0, 4))
     for idx, p in enumerate(pyramid_levels):
@@ -279,8 +279,8 @@ def anchors_for_shape(
         )
         shifted_anchors = shift(image_shapes[idx], anchor_params.strides[idx], anchors)
         all_anchors     = np.append(all_anchors, shifted_anchors, axis=0)
-    print('after enumerate')
-    import IPython;IPython.embed()
+    # print('after enumerate')
+    # import IPython;IPython.embed()
     return all_anchors
 
 
@@ -300,9 +300,9 @@ def shift(shape, stride, anchors):
     shift_x = (np.arange(0, shape[2]) + 0.5) * stride
     shift_y = (np.arange(0, shape[1]) + 0.5) * stride
     shift_x, shift_y = np.meshgrid(shift_x, shift_y)
-    print('anchors_shift')
-    import IPython;IPython.embed()
-    
+    # print('anchors_shift')
+    # import IPython;IPython.embed()
+
     shifts = np.vstack((
         shift_x.ravel(), shift_y.ravel(),
         shift_x.ravel(), shift_y.ravel()
@@ -320,8 +320,8 @@ def shift(shape, stride, anchors):
     return all_anchors
 
 
-def generate_anchors(base_size=16, ratios=None, scales=None):
-# def generate_anchors(base_size=8, ratios=None, scales=None):
+# def generate_anchors(base_size=16, ratios=None, scales=None):
+def generate_anchors(base_size=4, ratios=None, scales=None):
 
     """
     Generate anchor (reference) windows by enumerating aspect ratios X
@@ -353,8 +353,8 @@ def generate_anchors(base_size=16, ratios=None, scales=None):
     anchors[:, 0::2] -= np.tile(anchors[:, 2] * 0.5, (2, 1)).T
     anchors[:, 1::2] -= np.tile(anchors[:, 3] * 0.5, (2, 1)).T
 
-    print('generate_anchors')
-    import IPython;IPython.embed()
+    # print('generate_anchors')
+    # import IPython;IPython.embed()
     return anchors
 
 

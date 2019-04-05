@@ -1,21 +1,27 @@
 #### For 3D version (rollover version)
 BATCH SIZE 64 (data 3000-573)
-keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Test.csv
+keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_16_Train.csv ../i3d_hdf5_lung_data/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_16_Test.csv
 
 
-keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Test.csv
-
-keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Test.csv
+keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_16_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_16_Test.csv
 
 
 
-sudo cp i3d-retina-rollover/data/lung_nodule_annotation_oneclasses_8_Test.csv i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Test.csv
 
-sudo cp i3d-retina-rollover/data/lung_nodule_annotation_oneclasses_8_Train.csv i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Train.csv
 
-sudo cp i3d-retina-rollover/data/lung_nodule_annotation_threeclasses_8_Test.csv i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Test.csv
 
-sudo cp i3d-retina-rollover/data/lung_nodule_annotation_threeclasses_8_Train.csv i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Train.csv
+
+keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_32_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses__Test.csv
+
+
+##########COPY###########
+sudo cp i3d-retina-rollover/data/lung_nodule_annotation_oneclasses_16_Test.csv i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_16_Test.csv
+
+sudo cp i3d-retina-rollover/data/lung_nodule_annotation_oneclasses_16_Train.csv i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_16_Train.csv
+
+sudo cp i3d-retina-rollover/data/lung_nodule_annotation_threeclasses_16_Test.csv i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_16_Test.csv
+
+sudo cp i3d-retina-rollover/data/lung_nodule_annotation_threeclasses_16_Train.csv i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_16_Train.csv
 
 
 tmux

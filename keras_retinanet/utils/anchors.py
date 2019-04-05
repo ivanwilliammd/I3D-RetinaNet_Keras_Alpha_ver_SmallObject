@@ -44,7 +44,7 @@ The default anchor parameters.
 """
 AnchorParameters.default = AnchorParameters(
     # sizes   = [32, 64, 128, 256, 512],
-    sizes   = [8, 16, 32, 64, 128,
+    sizes   = [8, 16, 32, 64, 128],
     # strides = [8, 16, 32, 64, 128],
     strides = [2, 4, 8, 16, 32],
     # ratios  = np.array([0.5, 1, 2], keras.backend.floatx()),

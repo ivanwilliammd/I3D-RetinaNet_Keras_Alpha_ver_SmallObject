@@ -1,10 +1,9 @@
 #### For 3D version (rollover version)
-BATCH SIZE 32
-keras_retinanet/bin/train.py --step 187 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Test.csv
+BATCH SIZE 64 (data 3000-573)
+keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_1class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_oneclasses_8_Test.csv
 
-keras_retinanet/bin/train.py --step 187 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Test.csv
+keras_retinanet/bin/train.py --step 47 --epoch 50 csv ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Train.csv ../i3d_hdf5_lung_data/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data/lung_nodule_annotation_threeclasses_8_Test.csv
 
-Testing 3 class
 
 
 sudo cp i3d-retina-rollover/data/lung_nodule_annotation_oneclasses_8_Test.csv i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_oneclasses_8_Test.csv

@@ -588,9 +588,12 @@ def main(args=None):
         
         
         if args.config is not None:
-            if config and 'anchor_parameters' in config:
-                anchor_params = parse_anchor_parameters(config)
-                num_anchors   = anchor_params.num_anchors()
+            # if config and 'anchor_parameters' in config:
+            #     anchor_params = parse_anchor_parameters(config)
+            #     num_anchors   = anchor_params.num_anchors()
+
+            anchor_params = parse_anchor_parameters(args.config)
+            num_anchors   = anchor_params.num_anchors()
         else:
             anchor_params = None
             num_anchors   = None

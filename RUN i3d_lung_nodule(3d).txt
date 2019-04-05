@@ -6,6 +6,21 @@ Testing 3 class
 keras_retinanet/bin/train.py --step 1500 --epoch 50 csv ../i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_3class_2x_Training.csv ../i3d_hdf5_lung_data_resized_2x_box16/ClassID_3class.csv --val-annotations ../i3d_hdf5_lung_data_resized_2x_box16/lung_nodule_annotation_3class_2x_Testing.csv
 
 
+sudo cp i3d-retina-upsample/data/lung_nodule_annotation_1class_2x_Training.csv i3d_hdf5_lung_
+data_resized_2x_box16/lung_nodule_annotation_1class_2x_Training.csv
+
+sudo cp i3d-retina-upsample/data/lung_nodule_annotation_3class_2x_Training.csv i3d_hdf5_lung_
+data_resized_2x_box16/lung_nodule_annotation_3class_2x_Training.csv
+
+sudo cp i3d-retina-upsample/data/lung_nodule_annotation_1class_2x_Testing.csv i3d_hdf5_lung_
+data_resized_2x_box16/lung_nodule_annotation_1class_2x_Testing.csv
+
+sudo cp i3d-retina-upsample/data/lung_nodule_annotation_3class_2x_Testing.csv i3d_hdf5_lung_
+data_resized_2x_box16/lung_nodule_annotation_3class_2x_Testing.csv
+
+
+
+
 ##### For 2D version
 keras_retinanet/bin/train.py --step 2 --epoch 5 csv ../i3d_dataset_OLD/LungNoduleRevision.csv ../i3d_dataset_OLD/ClassIDnew.csv --val-annotations ../i3d_dataset_OLD/LungNoduleRevision.csv
 

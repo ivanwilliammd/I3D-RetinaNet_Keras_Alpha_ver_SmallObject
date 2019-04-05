@@ -267,7 +267,6 @@ def anchors_for_shape(
         shapes_callback = guess_shapes
     image_shapes = shapes_callback(image_shape, pyramid_levels)
 
-    import IPython;IPython.embed()
     # compute anchors over all pyramid levels
     all_anchors = np.zeros((0, 4))
     for idx, p in enumerate(pyramid_levels):

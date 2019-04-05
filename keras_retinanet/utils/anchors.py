@@ -174,8 +174,8 @@ def compute_gt_annotations(
 
     overlaps = compute_overlap(anchors.astype(np.float64), annotations.astype(np.float64))
    
-    # print('debug after computing overlap')
-    # import IPython;IPython.embed()
+    print('debug after computing overlap')
+    import IPython;IPython.embed()
 
     argmax_overlaps_inds = np.argmax(overlaps, axis=1)
     max_overlaps = overlaps[np.arange(overlaps.shape[0]), argmax_overlaps_inds]

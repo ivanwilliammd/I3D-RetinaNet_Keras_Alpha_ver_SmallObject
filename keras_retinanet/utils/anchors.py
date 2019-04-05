@@ -233,8 +233,7 @@ def guess_shapes(image_shape, pyramid_levels):
     Returns
         A list of image shapes at each pyramid level.
     """
-    # image_shape = np.array(image_shape[:2])
-    image_shape = np.array(image_shape[1:3])
+    image_shape = np.array(image_shape[:3])
     image_shapes = [(image_shape + 2 ** x - 1) // (2 ** x) for x in pyramid_levels]
     return image_shapes
 
@@ -291,9 +290,11 @@ def shift(shape, stride, anchors):
     """
 
     # create a grid starting from half stride from the top left corner
-    shift_x = (np.arange(0, shape[1]) + 0.5) * stride
-    shift_y = (np.arange(0, shape[0]) + 0.5) * stride
+    # shift_x = (np.arange(0, shape[1]) + 0.5) * stride
+    # shift_y = (np.arange(0, shape[0]) + 0.5) * stride
     
+    shift_x = (np.arange(0, shape[2]) + 0.5) * stride
+    shift_y = (np.arange(0, shape[1]) + 0.5) * stride
     shift_x, shift_y = np.meshgrid(shift_x, shift_y)
 
     shifts = np.vstack((
@@ -313,7 +314,9 @@ def shift(shape, stride, anchors):
     return all_anchors
 
 
-def generate_anchors(base_size=16, ratios=None, scales=None):
+# def generate_anchors(base_size=16, ratios=None, scales=None):
+def generate_anchors(base_size=4, ratios=None, scales=None):
+
     """
     Generate anchor (reference) windows by enumerating aspect ratios X
     scales w.r.t. a reference window.

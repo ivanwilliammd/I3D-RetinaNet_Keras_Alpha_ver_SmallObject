@@ -522,7 +522,7 @@ def main(args=None):
         # load RGB sample (just one example)
         # import IPython; IPython.embed()
         # make prediction
-    # rgb_sample = train_generator.__getitem__(1)[0]
+    rgb_sample = train_generator.__getitem__(1)[0]
     # rgb_logits = rgb_model.predict(rgb_sample)
     # import IPython; IPython.embed()
     

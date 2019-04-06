@@ -45,12 +45,12 @@ The default anchor parameters.
 AnchorParameters.default = AnchorParameters(
     # sizes   = [32, 64, 128, 256, 512],
     # sizes   = [8, 16, 32, 64, 128],
-    # sizes   = [16, 32, 64, 128, 256],
-    sizes   = [8, 16, 32, 64, 128],
+    sizes   = [16, 32, 64, 128, 256],
+    # sizes   = [8, 16, 32, 64, 128],
     # strides = [8, 16, 32, 64, 128],
     # strides = [2, 4, 8, 16, 32],
-    # strides = [4, 8, 16, 32, 64],
-    strides = [2, 4, 8, 16, 32],
+    strides = [4, 8, 16, 32, 64],
+    # strides = [2, 4, 8, 16, 32],
     # ratios  = np.array([0.5, 1, 2], keras.backend.floatx()),
     ratios  = np.array([1,], keras.backend.floatx()),
     scales  = np.array([2 ** 0, 2 ** (1.0 / 3.0), 2 ** (2.0 / 3.0)], keras.backend.floatx()),
@@ -233,8 +233,8 @@ def guess_shapes(image_shape, pyramid_levels):
     Returns
         A list of image shapes at each pyramid level.
     """
-    # image_shape = np.array(image_shape[:3])
-    image_shape = np.array(image_shape[1:4])
+    image_shape = np.array(image_shape[:3])
+    # image_shape = np.array(image_shape[1:4])
     image_shapes = [(image_shape + 2 ** x - 1) // (2 ** x) for x in pyramid_levels]
     return image_shapes
 
@@ -320,8 +320,8 @@ def shift(shape, stride, anchors):
     return all_anchors
 
 
-# def generate_anchors(base_size=16, ratios=None, scales=None):
-def generate_anchors(base_size=4, ratios=None, scales=None):
+def generate_anchors(base_size=16, ratios=None, scales=None):
+# def generate_anchors(base_size=4, ratios=None, scales=None):
 
     """
     Generate anchor (reference) windows by enumerating aspect ratios X
